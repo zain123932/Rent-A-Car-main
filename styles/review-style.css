@@ -1,0 +1,312 @@
+/* review-style.css */
+
+/* ___Reuse Variables & Theme Connection___ */
+:root {
+    /* Define defaults for Review Page (Dark Mode) */
+    --page-bg: #07081d;       
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --form-bg: rgba(255,255,255,0.03);
+    --input-bg: rgba(255,255,255,0.05);
+    
+    /* Inherit global theme colors from theme.css */
+    --text-main: var(--primary-color); 
+    --text-sub: var(--text-muted);
+}
+
+/* ___LIGHT MODE OVERRIDES___ */
+body.light-mode {
+    --page-bg: #f4f6f8;       /* Light Gray Page */
+    --card-bg: #ffffff;       /* White Cards */
+    --form-bg: #ffffff;       /* White Form */
+    --input-bg: rgba(0,0,0,0.05); /* Light gray inputs */
+}
+
+/* ___Base Styling___ */
+body {
+    background-color: var(--page-bg); /* Uses dynamic variable */
+    color: var(--primary-color);      /* From theme.css */
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Header override moved to navbar.css */
+
+/* ___Trust Hero Section___ */
+.trust-hero {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(212, 50, 66, 0.1), transparent 70%);
+}
+
+.trust-badge {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.trust-badge .score {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--secondary-color);
+    text-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.trust-badge .stars {
+    color: #ffb400; /* Gold */
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.trust-badge p {
+    color: var(--primary-color);
+    opacity: 0.7;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.trust-hero h1 {
+    font-size: clamp(40px, 5vw, 70px);
+    color: var(--primary-color);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.trust-hero h1 span {
+    color: var(--secondary-color);
+}
+
+/* ___Reviews Grid___ */
+.reviews-section {
+    padding: 0 5%;
+    margin-bottom: 5rem;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.review-card {
+    background: var(--card-bg); /* Dynamic */
+    border: 1px solid var(--border-color); /* From theme.css */
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary-color);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Card Internals */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--secondary-color);
+}
+
+.profile-info h3 {
+    color: var(--primary-color);
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.profile-info span {
+    color: var(--secondary-color);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.rating {
+    background: var(--secondary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.feedback {
+    color: var(--primary-color);
+    opacity: 0.8;
+    line-height: 1.6;
+    font-size: 15px;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
+
+.card-footer span {
+    font-size: 12px;
+    color: var(--text-muted); /* Uses Theme Variable */
+    opacity: 0.7;
+}
+
+.card-footer i {
+    font-size: 24px;
+    color: var(--border-color);
+}
+
+/* Highlight Card */
+.review-card.highlight {
+    background: linear-gradient(145deg, rgba(212, 50, 66, 0.05), transparent);
+    border-color: rgba(212, 50, 66, 0.3);
+}
+
+/* ___Add Review Form___ */
+.add-review {
+    padding: 4rem 5%;
+    max-width: 1200px;
+    margin: 0 auto 5rem;
+}
+
+.form-container {
+    display: flex;
+    background: var(--form-bg); /* Dynamic */
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-left {
+    flex: 1;
+    background: var(--secondary-color);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-left::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+}
+
+.form-left h2 {
+    color: white;
+    font-size: 40px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-left h2 span {
+    color: #26284e; 
+    font-weight: 800;
+}
+
+.form-left p { color: rgba(255,255,255,0.8); }
+
+.form-right {
+    flex: 2;
+    padding: 3rem;
+}
+
+/* Inputs */
+.input-group {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    background: var(--input-bg); /* Dynamic */
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    color: var(--primary-color);
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--secondary-color);
+    background: rgba(128,128,128,0.1); /* Slight tint on focus */
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+    margin-bottom: 20px;
+}
+
+/* Star Widget */
+.star-widget {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.star-widget input { display: none; }
+
+.star-widget label {
+    font-size: 25px;
+    color: var(--border-color);
+    filter: brightness(0.8); 
+    padding: 0 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Hover & Checked States for Stars */
+.star-widget input:not(:checked) ~ label:hover,
+.star-widget input:not(:checked) ~ label:hover ~ label { color: #fd4; }
+
+.star-widget input:checked ~ label { color: #fd4; }
+
+button {
+    background: linear-gradient(90deg, #ff9900, #ff5e00);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s;
+}
+
+button:hover { transform: scale(1.05); }

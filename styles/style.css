@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Main global reset and variables are handled in theme.css or implicit, 
+   but specific brand colors can stay here if not global */
+:root {
+    --secondary-color: #ed1329;
+    --tertiary-color: #ff8938;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+html {
+    font-size: 16px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh; 
+    background-color: var(--background-color);
+    transition: background-color 0.4s ease;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul { list-style: none; }
+li { display: inline-block; }
+
+/* ___HERO SECTION (HOME)___ */
+/* Header base styling moved to navbar.css */
+
+.hero {
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem 0;
+    flex: 1; 
+    display: flex;
+    align-items: center;
+}
+
+.hero > .row {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    margin: 0 auto;
+    gap: 3rem;
+    flex-wrap: wrap; 
+}
+
+.hero > .row > .leftsection {
+    flex: 1 1 500px; 
+    width: 100%;     
+    margin: 0;
+    min-width: 300px;
+}
+
+.hero > .row > .leftsection > .content > h2 {
+    letter-spacing: 0.3rem;
+    font-size: clamp(40px, 6vw, 100px);
+    font-weight: 900;
+    color: var(--primary-color);
+    text-transform: capitalize;
+    line-height: 1.1;
+}
+
+.hero > .row > .leftsection > .content > h2 > span {
+    letter-spacing: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.hero > .row > .leftsection > .content > p {
+    margin: 1.5rem 0;
+    color: var(--primary-color);
+    line-height: 1.6;
+    font-size: clamp(13px, 1vw, 16px);
+    max-width: 90%;
+}
+
+/* ___3D Button Container___ */
+.btn-container {
+    padding: 3px;
+    background: linear-gradient(180deg, rgb(253, 30, 1), rgb(180, 20, 0));
+    border-radius: 10px;
+    transform: perspective(850px) rotateX(14deg) rotateY(8deg) rotateZ(-11deg);
+    box-shadow:
+        -4px 4px 0px #8b0000,
+        -5px 7px 8px rgba(139, 0, 0, 0.5),
+        -10px 13px 18px rgba(139, 0, 0, 0.3),
+        -20px 20px 40px rgba(139, 0, 0, 0.6);
+    position: relative;
+    transition: all 0.4s ease;
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+.btn-container:hover {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    box-shadow:
+        0px 4px 5px #8b0000,
+        0px 7px 8px rgba(139, 0, 0, 0.5),
+        0px 13px 18px rgba(139, 0, 0, 0.3),
+        0px 20px 40px rgba(139, 0, 0, 0.6);
+}
+
+/* ___The Actual Button___ */
+.glowing-button {
+    color: white; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 40px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    background: linear-gradient(90deg, rgb(255, 0, 0), rgb(248, 112, 1), rgb(253, 30, 1));
+    background-size: 200% 200%;
+    animation: rgb-light 3s linear infinite alternate;
+    box-shadow: inset 0px -6px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+@keyframes rgb-light {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.glowing-button:hover {
+    filter: brightness(1.1);
+    box-shadow:
+        inset 0px -10px 20px rgba(0, 0, 0, 0.4),
+        0px 8px 15px rgba(255, 69, 0, 0.4);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.arrow {
+    font-size: 18px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.glowing-button:hover .arrow {
+    transform: translateX(5px);
+}
+
+.hero .info {
+    width: 100%;
+    display: flex;
+    margin-top: 4rem;
+    gap: 2rem;
+}
+
+.hero .info .production {
+    line-height: 1.2;
+}
+
+.hero .info .production h2 {
+    margin-top: 0.8rem;
+    font-size: clamp(16px, 1.2vw, 20px);
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.hero .info .production p {
+    padding-right: 0;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    font-size: clamp(13px, 1vw, 16px);
+}
+
+/* ___RIGHT SECTION___ */
+.hero .rightsection {
+    flex: 1 1 500px; 
+    width: 100%;
+    max-width: 950px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+}
+
+.hero .rightsection .my-car {
+    width: 100%;
+    max-width: 100%;
+}
+
+.hero .rightsection img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ___Location Section Styles___ */
+.location-section {
+    width: 100%;
+    padding: 3rem 3rem 5rem;
+    background: var(--location-gradient);
+}
+
+.location-section .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.location-section .section-title h2 {
+    font-size: clamp(30px, 4vw, 50px);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.location-section .section-title h2 span { color: var(--secondary-color); }
+.location-section .section-title p { opacity: 0.8; margin-top: 10px; }
+
+.location-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--glass-card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.map-frame {
+    flex: 2;
+    min-width: 300px;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.location-details {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.detail-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: var(--detail-box-bg);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.detail-box:hover { background: rgba(255,255,255,0.1); transform: translateX(5px); }
+
+.detail-box i {
+    font-size: 24px;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.detail-box h3 {
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.detail-box p {
+    color: var(--primary-color);
+    opacity: 0.8;
+    font-size: 14px;
+}
